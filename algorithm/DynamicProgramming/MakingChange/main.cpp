@@ -39,11 +39,11 @@ int makingChange_2Dim(int *coin, int n, int S)
     int count[n + 1][S + 1];
 
     //no coin, impossible
-    for (int i = 0; i < n + 1; i++)
+    for (int i = 0; i < S + 1; i++)
         count[0][i] = 0xffff;
 
     //S = 0, no need coin
-    for (int i = 0; i < S + 1; i++)
+    for (int i = 0; i < n + 1; i++)
         count[i][0] = 0;
 
     count[0][0] = 0;
