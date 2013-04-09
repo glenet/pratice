@@ -1,0 +1,70 @@
+Website: http://guitarpenguin.is-programmer.com/posts/32172.html
+Dynamic Programming Problems 动态规划经典问题集
+1. The Integer Knapsack Problem (Duplicate Items Permitted):
+You have  types of items, where the  item type has an integer size  and a real value .
+You are trying to fill a knapsack of total capacity with a selection of items of maximum value.
+You can add multiple items of the same type to the knapsack.
+ Solution: Let  denote the maximum value you can pack into a size  knapsack.
+ We can express recursively in terms of solutions to smaller problems as follows:
+ Computing each value will require  time, and we need to sequentially compute such values.
+ Therefore, total running time is  . Total space is  .
+ The value of  will contain the value of the optimal knapsack packing.
+ We can reconstruct the list of items in the optimal solution by maintaining and following “backpointers”
+  2. Maximum Value Contiguous Subsequence.
+  Given a sequence of  real numbers ,
+  determine a contiguous subsequence  for which the sum of elements in the subsequence is maximized.
+   Solution: Let denote the max sum over all windows ending at 
+   It only takes linear time to run the program since it only need to solve sub-problems and each takes constnt time.
+   3. Making Change: You are given  types of coin denominations of values   (all integers).
+   Assume , so you can always make change for any amount of money C.
+   Give an algorithm which makes change for an amount of money C with as few coins as possible.
+   Solution: Let denote the min number of coins required to make changes for amount of money 
+   It takes  time because we are solving subproblems,
+   each of which requires minimization  different terms. (Similar to integer knapsack problem)
+   4. Longest Increasing Subsequence. Given a sequence of n real numbers ,
+   determine a subsequence (not necessarily contiguous) of maximum length in which the values in the subsequence form a strictly increasing sequence.
+   Solution: Let denote the longest strictly increasing subsequence ending at position, therefore,
+   to find the solution overall, it has to find the maximum over all potential ending points of  :
+   since the longest increasing subsequence could end anywhere.
+   The algorithm takes time to run because I have to sort subproblems and each of them takes time.
+   5.Box Stacking:
+   You are given a set of  types of rectangular 3-D boxes, where the  box has height , width  and depth  (all real numbers).
+   You want to create a stack of boxes which is as tall as possible,
+   but you can only stack a box on top of another box if the dimensions of the 2-D base of the lower box are each strictly larger than those of the 2-D base of the higher box.
+   Of course, you can rotate a box so that any side functions as its base.
+   It is also allowable to use multiple instances of the same type of box.
+   Solution: constraint : can only stack box on box if and 
+   (without loss of generality, assume  ).
+   First sort the base area by decreasing order:
+   then let  denote the tallest box stack I could form with box on top, so
+   The algorithm takes time to run because I have to sort subproblems and each of them takes time.
+   At the end, the solution is found by taking the max of all potential top boxes of .
+   (Since we are not sure in the optimal solution, which box is on top)
+   6. Building Bridges.
+   Consider a 2-D map with a horizontal river passing through its center.
+   There are cities on the southern bank with x-coordinates  and  cities on the northern bank with x-coordinates .
+   You want to connect as many north-south pairs of cities as possible with bridges such that no two bridges cross.
+   When connecting cities, you are only allowed to connect the the ith city on the northern bank to the ith city on the southern bank.
+   Solution: consider the south bank city (below the river) ,
+   let denote the index of corresponding city on the north bank ( in the figure).
+   So we could compute the by sorting in time.
+   Now we want to find the longest increasing subsequence through , so it is identical to problem 4.
+   7. Balanced Partition: You have a set of n integers each in the range 0 . . .K.
+   Partition these integers into two subsets such that you minimize ,
+   where  and  denote the sums of the elements in each of the two subsets.
+   Solution: Use  where and 
+   therefore, if  or 
+   dynamic programming formula is:
+   this procedure takes time to compute.
+   To solve the original problem, let , and the purpose is to make  close to 0 as possible.
+   what we want to find is:
+   8. Edit Distance.
+   Given two text strings A of length n and B of length m,
+   you want to transform A into B with a minimum number of operations of the following types:
+   delete a character from A, insert a character into A,
+   or change some character in A into a new character.
+   The minimal number of such operations required to transform A into B is called the edit distance between A and B.
+   Solution: Use to denote the cost for inserting, deleting or replacing a letter.
+   The goal is to compute the minimum cost of translating A to B.
+   Let denote the minimum cost of translating into , then
+   It takes time to compute and final solution is stored in 
